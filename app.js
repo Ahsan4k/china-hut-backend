@@ -1,3 +1,4 @@
+const cool = require("cool-ascii-faces");
 const express = require("express");
 const app = express();
 const Auth = require("./routes/auth");
@@ -8,6 +9,7 @@ require("dotenv").config();
 app.use(express.json());
 
 app.use("/api/auth", Auth);
+app.get("/cool", (req, res) => res.send(cool()));
 
 app.get("/times", (req, res) => res.send(showTimes()));
 
