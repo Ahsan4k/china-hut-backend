@@ -1,8 +1,9 @@
+import  { Request, Response } from "express";
 const Signup = require("../models/signup");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-const Register = async (req, res) => {
+const Register = async (req:Request, res:Response) => {
   const details = req.body;
   try {
     const number = await Signup.findOne({ phoneNumber: details.phoneNumber });
@@ -42,7 +43,7 @@ const Register = async (req, res) => {
   }
 };
 
-const Login = async (req, res) => {
+const Login = async (req:Request, res:Response) => {
   const details = req.body;
   try {
     const data = await Signup.findOne({ email: details.email });
@@ -80,7 +81,7 @@ const Login = async (req, res) => {
   }
 };
 
-const Forgot = async (req, res) => {
+const Forgot = async (req:Request, res:Response) => {
   const body = req.body;
   try {
     const find = await Signup.findOne({ phoneNumber: body.phoneNumber });
@@ -101,7 +102,7 @@ const Forgot = async (req, res) => {
   }
 };
 
-const verifyNumber = async () => {
+const verifyNumber = async (req:Request, res:Response) => {
   const body = req.body.phoneNumber;
   try {
     const result = await Signup.findOne({ phoneNumber: body.phoneNumber });
@@ -115,9 +116,9 @@ const verifyNumber = async () => {
   }
 };
 
-const Logout = async () => {
-  const authHeader = req.headers.authorization.token;
-  const token = authHeader.split(" ")[1];
+const Logout =  async (req:Request, res:Response) => {
+  const authHeader = req.headers.authorization;
+  const token = authHeader?.split(" ")[1];
   try {
     const result = await Signup.findOne({ token: token });
     if (result || result.length > 0) {
