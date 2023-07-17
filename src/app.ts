@@ -1,6 +1,7 @@
-// const cool = require("cool-ascii-faces");
-const express = require("express");
+// src/app.ts
+import express, { Request, Response } from "express";
 const app = express();
+
 const Auth = require("./routes/auth");
 const connectDB = require("./db/connect");
 const showTimes = require("./controllers/times");
@@ -15,7 +16,7 @@ app.use("/api/auth", Auth);
 app.get("/times", (req, res) => res.send(showTimes()));
 
 app.get("/", (req, res) => {
-  res.send("Coming Soon...");
+  res.send('<div style="display:flex;align-self:center"><h1>Coming Soon...</h1></div>');
 });
 
 const port = process.env.PORT || 3000;

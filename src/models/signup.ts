@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const SignupSchema = new mongoose.Schema({
   firstName: String,
