@@ -1,11 +1,11 @@
-// src/app.ts
-import express, { Request, Response } from "express";
-const app = express();
-
 const Auth = require("./routes/auth");
+const express = require("express")
 const connectDB = require("./db/connect");
 const showTimes = require("./controllers/times");
 require("dotenv").config();
+
+const app = express();
+
 
 app.use(express.json());
 
