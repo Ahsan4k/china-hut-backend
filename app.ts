@@ -1,15 +1,12 @@
-const Auth = require("./routes/auth");
+const Auth = require("./src/routes/auth");
 const express = require("express")
-const connectDB = require("./db/connect");
-const showTimes = require("./controllers/times");
+const connectDB = require("./src/db/connect");
+const showTimes = require("./src/controllers/times");
 require("dotenv").config();
 
 const app = express();
 
-
 app.use(express.json());
-
-app.use("/api/auth", Auth);
 
 // app.get("/cool", (req, res) => res.send(cool()));
 
