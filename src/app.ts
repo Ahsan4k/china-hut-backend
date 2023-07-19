@@ -1,15 +1,16 @@
-// src/app.ts
 import express, { Request, Response } from "express";
 const app = express();
 
 const Auth = require("./routes/auth");
+const Menu = require("./routes/menu");
 const connectDB = require("./db/connect");
 const showTimes = require("./controllers/times");
 require("dotenv").config();
-
 app.use(express.json());
 
+app.use(express.urlencoded({extended:true}))
 app.use("/api/auth", Auth);
+app.use("/api/menu", Menu);
 
 // app.get("/cool", (req, res) => res.send(cool()));
 
