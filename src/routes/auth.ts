@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+const express = require("express")
 
 const router = express.Router();
 const {
@@ -14,7 +14,7 @@ router.route("/login").patch(Login);
 router.route("/forgotpassword").patch(Forgot);
 router.route("/verify").post(verifyNumber);
 router.route("/logout").delete(Logout);
-router.get("/get", (req:Request, res:Response) => {
+router.get("/get", (req:any, res:any) => {
   res.send("Success");
 });
 
