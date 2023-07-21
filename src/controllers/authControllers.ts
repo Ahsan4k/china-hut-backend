@@ -1,9 +1,8 @@
-import  { Request, Response } from "express";
-const Signup = require("../models/signup");
+const {Signup} = require("../models/signup");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-const Register = async (req:Request, res:Response) => {
+export const Register = async (req:any, res:any) => {
   const details = req.body;
   try {
     const number = await Signup.findOne({ phoneNumber: details.phoneNumber });
@@ -43,7 +42,7 @@ const Register = async (req:Request, res:Response) => {
   }
 };
 
-const Login = async (req:Request, res:Response) => {
+export const Login = async (req:any, res:any) => {
   const details = req.body;
   try {
     const data = await Signup.findOne({ email: details.email });
@@ -81,7 +80,7 @@ const Login = async (req:Request, res:Response) => {
   }
 };
 
-const Forgot = async (req:Request, res:Response) => {
+export const Forgot = async (req:any, res:any) => {
   const body = req.body;
   try {
     const find = await Signup.findOne({ phoneNumber: body.phoneNumber });
@@ -102,7 +101,7 @@ const Forgot = async (req:Request, res:Response) => {
   }
 };
 
-const verifyNumber = async (req:Request, res:Response) => {
+export const verifyNumber = async (req:any, res:any) => {
   const body = req.body.phoneNumber;
   try {
     const result = await Signup.findOne({ phoneNumber: body.phoneNumber });
@@ -116,7 +115,7 @@ const verifyNumber = async (req:Request, res:Response) => {
   }
 };
 
-const Logout =  async (req:Request, res:Response) => {
+export const Logout =  async (req:any, res:any) => {
   const authHeader = req.headers.authorization;
   const token = authHeader?.split(" ")[1];
   try {
@@ -133,12 +132,4 @@ const Logout =  async (req:Request, res:Response) => {
   } catch (error) {
     res.json(error);
   }
-};
-
-module.exports = {
-  Register,
-  Login,
-  Forgot,
-  verifyNumber,
-  Logout,
 };

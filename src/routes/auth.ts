@@ -1,21 +1,12 @@
-import express, { Request, Response } from "express";
+export const router = require("express").Router();
 
-const router = express.Router();
-const {
-  Register,
-  Login,
-  Forgot,
-  verifyNumber,
-  Logout,
-} = require("../controllers/authControllers");
+const {Register, Login, Forgot, verifyNumber, Logout} = require('../controllers/authControllers')
 
 router.route("/signup").post(Register);
 router.route("/login").patch(Login);
 router.route("/forgotpassword").patch(Forgot);
 router.route("/verify").post(verifyNumber);
 router.route("/logout").delete(Logout);
-router.get("/get", (req:Request, res:Response) => {
+router.get("/get", (req:any, res:any) => {
   res.send("Success");
 });
-
-module.exports = router;
