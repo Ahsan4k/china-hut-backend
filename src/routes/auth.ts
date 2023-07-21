@@ -1,13 +1,5 @@
 const express = require("express")
-
 const router = express.Router();
-const {
-  Register,
-  Login,
-  Forgot,
-  verifyNumber,
-  Logout,
-} = require("../controllers/authControllers");
 
 router.route("/signup").post(Register);
 router.route("/login").patch(Login);
