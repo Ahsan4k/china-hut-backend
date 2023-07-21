@@ -1,4 +1,4 @@
-const express = require("express")
+let express = require("express")
 const router = express.Router();
 
 const {Register, Login, Forgot, verifyNumber, Logout} = require('../controllers/authControllers')
