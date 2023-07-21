@@ -1,4 +1,4 @@
-const router = require("express").Router();
+export const router = require("express").Router();
 
 const {Register, Login, Forgot, verifyNumber, Logout} = require('../controllers/authControllers')
 
@@ -10,5 +10,3 @@ router.route("/logout").delete(Logout);
 router.get("/get", (req:any, res:any) => {
   res.send("Success");
 });
-
-module.exports = router;
