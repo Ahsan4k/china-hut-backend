@@ -1,6 +1,6 @@
 const Auth = require("./src/routes/auth");
 const express = require("express")
-const connectDB = require("./src/db/connect");
+const {connectDB} = require("./src/db/connect");
 const showTimes = require("./src/controllers/times");
 require("dotenv").config();
 
